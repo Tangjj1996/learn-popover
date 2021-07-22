@@ -1,0 +1,22 @@
+{
+  "name": "learn-popover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node webpack/dev.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.45.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
