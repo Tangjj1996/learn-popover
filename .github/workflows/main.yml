@@ -1,0 +1,17 @@
+name: Test
+on:
+  push:
+    branches: [master]
+jobs:
+  build-page:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+      - run: echo "test success"
