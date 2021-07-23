@@ -2,15 +2,10 @@ import { webpack, HotModuleReplacementPlugin } from 'webpack'
 import merge from 'webpack-merge'
 import baseConfig from './base.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import WebpackDevServer from 'webpack-dev-server'
 import path from 'path'
 import chalk from 'chalk'
-import { log, error } from './utils'
-import * as fs from 'fs'
-
-fs.rmSync(path.resolve(__dirname, '../build'), {
-  recursive: true,
-  force: true,
-})
+import { error, log } from './utils'
 
 const devOptions = merge(baseConfig, {
   mode: 'development',
@@ -23,16 +18,17 @@ const devOptions = merge(baseConfig, {
   ],
 })
 const complier = webpack(devOptions)
+const server = new WebpackDevServer(complier, {
+  stats: {
+    errorDetails: true,
+  },
+})
 
-complier.run((err, stats) => {
-  if (err || stats.hasErrors()) {
-    error(chalk.red(stats.toString()))
+server.listen(3000, (err) => {
+  if (err) {
+    error(chalk.red(err))
     process.exit(1)
   }
 
-  log(
-    stats.toString({
-      color: true,
-    })
-  )
+  log(chalk.green('server render successful!'))
 })
