@@ -1,8 +1,8 @@
 {
   "name": "learn-popover",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is just a exercise for typesript and webpack used in node.",
+  "main": "src/index.ts",
   "scripts": {
     "start": "ts-node webpack/dev.config.ts",
     "build": "ts-node webpack/prod.config.ts"

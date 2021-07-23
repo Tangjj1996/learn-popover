@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "esModuleInterop": true
+    "target": "ESNext",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "."
   },
   "exclude": ["node_modules"]
 }
