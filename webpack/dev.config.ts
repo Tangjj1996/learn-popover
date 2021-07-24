@@ -8,6 +8,10 @@ import chalk from 'chalk'
 import { error, log } from './utils'
 
 const devOptions = merge(baseConfig, {
+  entry: [
+    path.resolve(__dirname, '../src/hot-module-replace.ts'),
+    path.resolve(__dirname, '../src/index.ts'),
+  ],
   mode: 'development',
   devtool: 'eval-cheap-source-map',
   plugins: [
@@ -17,12 +21,15 @@ const devOptions = merge(baseConfig, {
     new HotModuleReplacementPlugin(),
   ],
 })
-const complier = webpack(devOptions)
-const server = new WebpackDevServer(complier, {
+const options = {
+  hot: true,
   stats: {
     errorDetails: true,
   },
-})
+}
+WebpackDevServer.addDevServerEntrypoints(devOptions, options)
+const complier = webpack(devOptions)
+const server = new WebpackDevServer(complier, options)
 
 server.listen(3000, (err) => {
   if (err) {
