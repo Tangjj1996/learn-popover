@@ -13,9 +13,12 @@ import chalk from 'chalk'
 import { error, log } from './utils'
 
 const devOptions = merge(baseConfig, {
-  entry: path.resolve(__dirname, '../src/index.tsx'),
   mode: 'development',
   devtool: 'eval-cheap-source-map',
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[id].js',
+  },
   module: {
     rules: [
       {

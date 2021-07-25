@@ -1,11 +1,10 @@
 import { Configuration } from 'webpack'
 import path from 'path'
 
-export default {
+const baseOptions: Configuration = {
+  entry: path.resolve(__dirname, '../src/index.tsx'),
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: '[name].[contenthash:8].js',
-    chunkFilename: '[id].[chunkhash:8].js',
   },
   resolve: {
     extensions: ['.js', '.tsx', '.ts', '.d.ts'],
@@ -18,4 +17,6 @@ export default {
       },
     ],
   },
-} as Configuration
+}
+
+export default baseOptions

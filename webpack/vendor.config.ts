@@ -9,7 +9,7 @@ const dllOptions: Configuration = {
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: 'vendor.bundle.js',
-    library: 'verdor_lib',
+    library: 'verdor_lib', // library name nust same as Dllplugin name which will be a function name.
   },
   plugins: [
     new DllPlugin({
@@ -26,9 +26,5 @@ complier.run((err, stats) => {
     error(chalk.red(stats.toString()))
     process.exit(1)
   }
-  log(
-    stats.toString({
-      color: true,
-    })
-  )
+  log(stats.toJson({ colors: true }).logging)
 })

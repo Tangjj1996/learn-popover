@@ -1,6 +1,7 @@
 import path from 'path'
 import * as fs from 'fs'
 import { log, error } from './utils'
+import chalk from 'chalk'
 import { webpack, DefinePlugin, DllReferencePlugin } from 'webpack'
 import { merge } from 'webpack-merge'
 import baseConfig from './base.config'
@@ -18,6 +19,10 @@ for (let i = 0; i < filenames.length; i++) {
 const prodOptions = merge(baseConfig, {
   mode: 'production',
   devtool: 'source-map',
+  output: {
+    filename: '[name].[fullhash:8].js',
+    chunkFilename: '[id].[chunkhash:8].js',
+  },
   module: {
     rules: [
       {
@@ -50,9 +55,8 @@ const complier = webpack(prodOptions)
 
 complier.run((err, stats) => {
   if (err || stats.hasErrors()) {
-    error(stats.toString({ color: true }))
+    error(chalk.red(stats.toString()))
     process.exit(1)
   }
-
-  log(stats.toString({ color: true }))
+  log(stats.toString('verbose'))
 })
