@@ -1,15 +1,19 @@
 import path from 'path'
 import * as fs from 'fs'
 import { log, error } from './utils'
-import { webpack, DefinePlugin } from 'webpack'
+import { webpack, DefinePlugin, DllReferencePlugin } from 'webpack'
 import { merge } from 'webpack-merge'
 import baseConfig from './base.config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-fs.rmSync(path.resolve(__dirname, '../build'), {
-  recursive: true,
-  force: true,
-})
+const filenames = fs.readdirSync(path.resolve(__dirname, '../build'))
+
+for (let i = 0; i < filenames.length; i++) {
+  if (filenames[i].match(/^vendor/)) continue
+  fs.rmSync(path.resolve(__dirname, `../build/${filenames[i]}`), {
+    force: true,
+  })
+}
 
 const prodOptions = merge(baseConfig, {
   mode: 'production',
@@ -37,6 +41,9 @@ const prodOptions = merge(baseConfig, {
       'process.env.NODE_ENV': '"production"',
     }),
     new MiniCssExtractPlugin(),
+    new DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../build/vendor-mainfest.json'),
+    }),
   ],
 })
 const complier = webpack(prodOptions)

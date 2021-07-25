@@ -1,4 +1,9 @@
-import { webpack, HotModuleReplacementPlugin, DefinePlugin } from 'webpack'
+import {
+  webpack,
+  HotModuleReplacementPlugin,
+  DefinePlugin,
+  DllReferencePlugin,
+} from 'webpack'
 import merge from 'webpack-merge'
 import baseConfig from './base.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -43,6 +48,9 @@ const devOptions = merge(baseConfig, {
       template: path.resolve(__dirname, '../public/index.html'),
     }),
     new HotModuleReplacementPlugin(),
+    new DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../build/vendor-mainfest.json'),
+    }),
   ],
 })
 const options = {

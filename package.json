@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node webpack/dev.config.ts",
-    "build": "ts-node webpack/prod.config.ts"
+    "build": "ts-node webpack/prod.config.ts",
+    "dll": "ts-node webpack/vendor.config.ts"
   },
   "keywords": [],
   "author": "",
