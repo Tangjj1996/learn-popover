@@ -1,4 +1,4 @@
-import { webpack, HotModuleReplacementPlugin } from 'webpack'
+import { webpack, HotModuleReplacementPlugin, DefinePlugin } from 'webpack'
 import merge from 'webpack-merge'
 import baseConfig from './base.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -36,6 +36,9 @@ const devOptions = merge(baseConfig, {
     ],
   },
   plugins: [
+    new DefinePlugin({
+      'process.env.NODE_ENV': '"development"',
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
     }),
