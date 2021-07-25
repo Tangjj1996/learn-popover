@@ -1,0 +1,14 @@
+$btn: red;
+
+.app {
+  display: flex;
+  align-items: center;
+  &__btn {
+    transform: translate(10px, 10px);
+    color: $btn;
+  }
+
+  &__tooltip {
+    color: $btn;
+  }
+}

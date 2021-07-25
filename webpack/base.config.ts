@@ -11,6 +11,11 @@ export default {
     extensions: ['.js', '.tsx', '.ts', '.d.ts'],
   },
   module: {
-    rules: [{ test: /\.tsx?$/, use: [{ loader: 'babel-loader' }] }],
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'babel-loader',
+      },
+    ],
   },
 } as Configuration

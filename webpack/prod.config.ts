@@ -1,10 +1,9 @@
 import path from 'path'
+import * as fs from 'fs'
 import { log, error } from './utils'
 import { webpack } from 'webpack'
 import { merge } from 'webpack-merge'
 import baseConfig from './base.config'
-
-import * as fs from 'fs'
 
 fs.rmSync(path.resolve(__dirname, '../build'), {
   recursive: true,

@@ -11,6 +11,30 @@ const devOptions = merge(baseConfig, {
   entry: path.resolve(__dirname, '../src/index.tsx'),
   mode: 'development',
   devtool: 'eval-cheap-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.s(a|c)ss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
