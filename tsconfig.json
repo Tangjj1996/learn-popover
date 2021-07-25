@@ -4,7 +4,8 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "jsx": "react"
   },
   "exclude": ["node_modules"]
 }

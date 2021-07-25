@@ -1,6 +1,5 @@
-declare namespace moduleq {
-  let hot: {
-    accept: () => void
+declare interface NodeModule {
+  hot: {
+    accept(path: string, fn: () => void, callback?: () => void): void
   }
-  let id: string
 }

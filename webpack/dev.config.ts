@@ -8,10 +8,7 @@ import chalk from 'chalk'
 import { error, log } from './utils'
 
 const devOptions = merge(baseConfig, {
-  entry: [
-    path.resolve(__dirname, '../src/hot-module-replace.ts'),
-    path.resolve(__dirname, '../src/index.ts'),
-  ],
+  entry: path.resolve(__dirname, '../src/index.tsx'),
   mode: 'development',
   devtool: 'eval-cheap-source-map',
   plugins: [
