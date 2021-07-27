@@ -7,13 +7,16 @@ import { merge } from 'webpack-merge'
 import baseConfig from './base.config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-const filenames = fs.readdirSync(path.resolve(__dirname, '../build'))
+if (fs.existsSync(path.resolve(__dirname, '../build'))) {
+  const filenames = fs.readdirSync(path.resolve(__dirname, '../build'))
 
-for (let i = 0; i < filenames.length; i++) {
-  if (filenames[i].match(/^vendor/)) continue
-  fs.rmSync(path.resolve(__dirname, `../build/${filenames[i]}`), {
-    force: true,
-  })
+  for (let i = 0; i < filenames.length; i++) {
+    if (filenames[i].match(/^vendor/)) continue
+    fs.rmSync(path.resolve(__dirname, `../build/${filenames[i]}`), {
+      recursive: true,
+      force: true,
+    })
+  }
 }
 
 const prodOptions = merge(baseConfig, {
@@ -58,5 +61,5 @@ complier.run((err, stats) => {
     error(chalk.red(stats.toString()))
     process.exit(1)
   }
-  log(stats.toString('verbose'))
+  log(stats.toString())
 })

@@ -7,7 +7,7 @@ import {
 import merge from 'webpack-merge'
 import baseConfig from './base.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import WebpackDevServer from 'webpack-dev-server'
+import WebpackDevServer, { Configuration } from 'webpack-dev-server'
 import path from 'path'
 import chalk from 'chalk'
 import { error, log } from './utils'
@@ -56,11 +56,12 @@ const devOptions = merge(baseConfig, {
     }),
   ],
 })
-const options = {
+const options: Configuration = {
   hot: true,
   stats: {
     errorDetails: true,
   },
+  contentBase: path.resolve(__dirname, '../'),
 }
 WebpackDevServer.addDevServerEntrypoints(devOptions, options)
 const complier = webpack(devOptions)
