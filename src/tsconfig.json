@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "ES5",
-    "module": "ESNext",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "jsx": "react"
-  }
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "ESNext",
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"jsx": "react"
+	}
 }

@@ -1,52 +1,52 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
 body,
 #app {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
 }
 
 #app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .app-wrap {
-  position: relative;
-  height: 300px;
-  width: 500px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 0 20px;
-  border: 2px dashed rgb(255, 107, 129);
-  border-radius: 10px;
+	position: relative;
+	height: 300px;
+	width: 500px;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: 0 20px;
+	border: 2px dashed rgb(255, 107, 129);
+	border-radius: 10px;
 
-  &::before,
-  &::after {
-    display: block;
-    content: '';
-    height: 600px;
-    width: 1px;
-  }
+	&::before,
+	&::after {
+		display: block;
+		content: '';
+		height: 600px;
+		width: 1px;
+	}
 
-  .app__button {
-    width: 100px;
-    height: 30px;
-  }
-  .app__tooltip {
-    background-color: #333;
-    color: white;
-    font-weight: bold;
-    padding: 4px 8px;
-    font-size: 13px;
-    border-radius: 4px;
-  }
+	.app__button {
+		width: 100px;
+		height: 30px;
+	}
+	.app__tooltip {
+		background-color: #333;
+		color: white;
+		font-weight: bold;
+		padding: 4px 8px;
+		font-size: 13px;
+		border-radius: 4px;
+	}
 }

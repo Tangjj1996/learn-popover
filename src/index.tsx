@@ -8,10 +8,10 @@ document.body.appendChild(root)
 ReactDOM.render(<App />, root)
 
 if (module) {
-  module.hot.accept('./app', () => {
-    import('./app').then((res) => {
-      const App = res.default
-      ReactDOM.render(<App />, root)
-    })
-  })
+	module.hot.accept('./app', () => {
+		import('./app').then((res) => {
+			const App = res.default
+			ReactDOM.render(<App />, root)
+		})
+	})
 }
